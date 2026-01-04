@@ -1,0 +1,6 @@
+---
+envAlias: production
+envAliasJob: Production
+domainPpAPI: api.rtarf-censor.dev-hubs.com
+domainPpWeb: web.rtarf-censor.dev-hubs.com
+envGroup: prod

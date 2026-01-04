@@ -1,0 +1,6 @@
+---
+envAlias: development
+envAliasJob: Development
+domainPpAPI: api-dev.rtarf-censor.dev-hubs.com
+domainPpWeb: web-dev.rtarf-censor.dev-hubs.com
+envGroup: dev
