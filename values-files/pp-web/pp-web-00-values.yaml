@@ -44,6 +44,6 @@ pp-web:
     enabled: true
     ports:
       - port: 80
-        targetPort: 5678
+        targetPort: 3000
         protocol: TCP
         name: http
