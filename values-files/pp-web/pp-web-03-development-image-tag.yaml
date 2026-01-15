@@ -2,4 +2,4 @@
 pp-web:
   pods:
     image:
-      tag: "develop-a89aaef"
+      tag: "develop-5a73a29"
