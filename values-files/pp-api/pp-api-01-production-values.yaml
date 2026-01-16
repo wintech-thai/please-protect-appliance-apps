@@ -28,7 +28,7 @@ pp-api:
         value: "postgresql.postgresql-prod.svc.cluster.local"
 
       - name: PostgreSQL__Database
-        value: "otep-prod"
+        value: "pp-prod"
 
       - name: PostgreSQL__User
         value: "postgres"
