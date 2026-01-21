@@ -1,0 +1,59 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ioc-loader
+spec:
+  # kubectl create job --from=cronjob/ioc-loader ioc-loader-001 -n otep-production
+  suspend: true
+  schedule: "1 * * * *"
+  jobTemplate:
+    spec:
+      ttlSecondsAfterFinished: 3600
+      template:
+        spec:
+          containers:
+          - name: cron-script
+            image: "asia-southeast1-docker.pkg.dev/its-artifact-commons/please-protect/please-protect-jobs:{{ .Values.ppJob.imageTag }}"
+            imagePullPolicy: IfNotPresent
+            command:
+            - ruby
+            args:
+            - /scripts/ioc-loader.rb
+            env:
+            - name: PG_HOST
+              value: postgresql.postgresql-{{ .Values.envGroup }}.svc.cluster.local
+
+            - name: PG_PORT
+              value: "5432"
+
+            - name: PG_USER
+              value: "postgres"
+
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pp-postgres-secret
+                  key: adminPasswordKey
+                  optional: false
+
+            - name: PG_DB
+              value: "pp-{{ .Values.envGroup }}"
+
+            - name: TEMP_DIR
+              value: '/data/temp'
+
+            - name: REDIS_HOST
+              value: "redis-master.redis.svc.cluster.local"
+
+            - name: REDIS_PORT
+              value: "6379"
+
+            volumeMounts:
+            - name: temp-dir
+              mountPath: /data/temp
+
+          restartPolicy: OnFailure
+
+          volumes:
+          - name: temp-dir
+            emptyDir: {}
