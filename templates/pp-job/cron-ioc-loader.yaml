@@ -3,9 +3,9 @@ kind: CronJob
 metadata:
   name: ioc-loader
 spec:
-  # kubectl create job --from=cronjob/ioc-loader ioc-loader-001 -n otep-production
-  suspend: true
-  schedule: "1 * * * *"
+  # kubectl create job --from=cronjob/ioc-loader ioc-loader-001 -n pp-production
+  suspend: false
+  schedule: "*/30 * * * *"
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 3600
