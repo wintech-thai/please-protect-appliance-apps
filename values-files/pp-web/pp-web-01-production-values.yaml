@@ -19,3 +19,6 @@ pp-web:
 
       - name: NODE_ENV
         value: 'Production'
+
+      - name: NEXT_PUBLIC_API_URL
+        value: 'http://pp-prod-pp-api'
