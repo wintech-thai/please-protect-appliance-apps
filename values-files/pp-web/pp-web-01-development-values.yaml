@@ -19,3 +19,6 @@ pp-web:
 
       - name: NODE_ENV
         value: 'Development'
+
+      - name: NEXT_PUBLIC_API_URL
+        value: 'http://pp-dev-pp-api'
