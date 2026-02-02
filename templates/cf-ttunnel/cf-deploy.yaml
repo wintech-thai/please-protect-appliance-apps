@@ -29,7 +29,8 @@ spec:
               memory: 128Mi
           volumeMounts:
             - name: config
-              mountPath: /etc/cloudflared
+              mountPath: /etc/cloudflared/config.yaml
+              subPath: config.yaml
             - name: creds
               mountPath: /etc/cloudflared/credentials.json
               subPath: credentials.json
