@@ -18,7 +18,7 @@ spec:
           args:
             - tunnel
             - --config
-            - /etc/cloudflared/config.yaml
+            - /data/config.yaml
             - run
           resources:
             requests:
@@ -28,14 +28,14 @@ spec:
               cpu: 200m
               memory: 128Mi
           volumeMounts:
-            - name: cloudflared-config
-              mountPath: /etc/cloudflared
-              readOnly: true
+            - name: config
+              mountPath: /data
+            - name: creds
+              mountPath: /secrets
       volumes:
-        - name: cloudflared-config
-          projected:
-            sources:
-              - configMap:
-                  name: cloudflared-config
-              - secret:
-                  name: cloudflared-creds
+        - name: config
+          configMap:
+            name: cloudflared-config
+        - name: creds
+          secret:
+            secretName: cloudflared-creds

@@ -5,7 +5,7 @@ metadata:
 data:
   config.yml: |
     tunnel: 7acb31a9-acc9-4f56-b46c-a27225f878cb
-    credentials-file: /etc/cloudflared/credentials.json
+    credentials-file: /secrets/credentials.json
 
     ingress:
       - hostname: tunnel-api-{{ .Values.envGroup }}.rtarf-censor.dev-hubs.com
