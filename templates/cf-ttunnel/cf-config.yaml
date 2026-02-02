@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: cloudflared-config
 data:
-  config.yml: |
+  config.yaml: |
     tunnel: 7acb31a9-acc9-4f56-b46c-a27225f878cb
     credentials-file: /secrets/credentials.json
 
