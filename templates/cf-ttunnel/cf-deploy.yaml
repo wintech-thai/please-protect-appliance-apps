@@ -28,16 +28,14 @@ spec:
               cpu: 200m
               memory: 128Mi
           volumeMounts:
-            - name: config
-              mountPath: /etc/cloudflared/config.yaml
-              subPath: config.yaml
-            - name: creds
-              mountPath: /etc/cloudflared/credentials.json
-              subPath: credentials.json
+            - name: cloudflared-config
+              mountPath: /etc/cloudflared
+              readOnly: true
       volumes:
-        - name: config
-          configMap:
-            name: cloudflared-config
-        - name: creds
-          secret:
-            secretName: cloudflared-creds
+        - name: cloudflared-config
+          projected:
+            sources:
+              - configMap:
+                  name: cloudflared-config
+              - secret:
+                  name: cloudflared-creds
