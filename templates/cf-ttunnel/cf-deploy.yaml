@@ -18,7 +18,7 @@ spec:
           args:
             - tunnel
             - --config
-            - /etc/cloudflared/config.yml
+            - /etc/cloudflared/config.yaml
             - run
           resources:
             requests:
