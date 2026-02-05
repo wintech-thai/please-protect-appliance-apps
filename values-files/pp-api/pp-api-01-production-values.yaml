@@ -74,3 +74,26 @@ pp-api:
             name: idp-secret
             key: IDP_REALM
             optional: false
+
+      - name: LOG_ENDPOINT
+        value: "http://logstash-auditlog.logstash-auditlog.svc.cluster.local:8080"
+
+      - name: ES_USER
+        valueFrom:
+          secretKeyRef:
+            name: es-basic-authen
+            key: ES_USER
+            optional: false
+
+      - name: ES_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: es-basic-authen
+            key: ES_PASSWORD
+            optional: false
+
+      - name: ES_URL
+        value: 'https://es-censor-es-http.elasticsearch.svc.cluster.local:9200'
+
+      - name: ES_INDEX_PATTERN
+        value: 'pp-*'
