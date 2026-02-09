@@ -12,6 +12,6 @@ data:
         service: http://pp-{{ .Values.envGroup }}-pp-api:80
 
       - hostname: tunnel-grafana-k8s.rtarf-censor.dev-hubs.com
-        service: https://grafana-k8s.rtarf-censor.dev-hubs.com
+        service: http://kube-prometheus-crds-grafana.monitoring.svc.cluster.local:80
 
       - service: http_status:404
