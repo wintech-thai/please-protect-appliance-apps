@@ -97,3 +97,6 @@ pp-api:
 
       - name: ES_INDEX_PATTERN
         value: 'pp-*'
+
+      - name: PROM_URL
+        value: 'http://prometheus-prometheus.monitoring.svc.cluster.local:9090'
