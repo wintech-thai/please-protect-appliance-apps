@@ -2,4 +2,4 @@
 pp-api:
   pods:
     image:
-      tag: "develop-82dc5f1"
+      tag: "develop-3f7db6f"
