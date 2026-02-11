@@ -100,3 +100,6 @@ pp-api:
 
       - name: PROM_URL
         value: 'http://prometheus-prometheus.monitoring.svc.cluster.local:9090'
+
+      - name: LOKI_URL
+        value: 'http://loki-log.loki-log.svc.cluster.local:3100'
