@@ -21,4 +21,7 @@ pp-web:
         value: 'Development'
 
       - name: NEXT_PUBLIC_API_URL
+        value: '/api/proxy'
+
+      - name: BACKEND_URL
         value: 'http://pp-dev-pp-api'
