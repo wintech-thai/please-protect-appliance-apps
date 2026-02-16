@@ -103,3 +103,6 @@ pp-api:
 
       - name: LOKI_URL
         value: 'http://loki-log.loki-log.svc.cluster.local:3100'
+
+      - name: KUBE_URL
+        value: 'https://kubernetes.default.svc.cluster.local'
