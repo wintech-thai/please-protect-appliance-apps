@@ -9,6 +9,12 @@ pp-api:
   podDisruptionBudget:
     enabled: false
 
+  serviceAccount:
+    # serviceAccount.create -- create a service account and associate it with the pods
+    create: false
+    # serviceAccount.name -- name of the service account to use (and potentially create)
+    name: pp-sa
+
   pods:
     controller: deployment
     #readinessProbe:
