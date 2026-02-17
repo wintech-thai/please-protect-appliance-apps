@@ -106,3 +106,20 @@ pp-api:
 
       - name: KUBE_URL
         value: 'https://kubernetes.default.svc.cluster.local'
+
+      - name: ARKIME_USER
+        valueFrom:
+          secretKeyRef:
+            name: arkime-basic-authen
+            key: ARKIME_USER
+            optional: false
+
+      - name: ARKIME_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: arkime-basic-authen
+            key: ARKIME_PASSWORD
+            optional: false
+
+      - name: ARKIME_URL
+        value: 'http://censor-arkime-central-viewer.censor-arkime.svc.cluster.local:8005'
