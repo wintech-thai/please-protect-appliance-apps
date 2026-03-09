@@ -2,4 +2,4 @@
 pp-web:
   pods:
     image:
-      tag: "develop-41fe066"
+      tag: "main-1c240fe"
