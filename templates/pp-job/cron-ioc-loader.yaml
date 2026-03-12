@@ -5,7 +5,7 @@ metadata:
 spec:
   # kubectl create job --from=cronjob/ioc-loader ioc-loader-001 -n pp-production
   suspend: false
-  schedule: "*/30 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 3600
