@@ -43,7 +43,7 @@ spec:
             value: "postgres"
 
           - name: PG_DATABASE
-            value: "pleaseprotect"
+            value: pp-{{ .Values.envGroup }}
 
           - name: PG_PASSWORD
             valueFrom:
