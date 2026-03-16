@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heartbeat-agent
+
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+
+  selector:
+    matchLabels:
+      app: heartbeat-agent
+
+  template:
+    metadata:
+      labels:
+        app: heartbeat-agent
+
+    spec:
+      terminationGracePeriodSeconds: 10
+
+      containers:
+      - name: heartbeat-agent
+        image: "asia-southeast1-docker.pkg.dev/its-artifact-commons/please-protect/please-protect-jobs:{{ .Values.ppJob.imageTag }}"
+        imagePullPolicy: Always
+
+        command:
+          - ruby
+        args:
+          - /scripts/heartbeat-agent.rb
+
+        env:
+          - name: CHECK_INTERVAL
+            value: "30"
+
+          - name: PG_HOST
+            value: postgresql.postgresql-{{ .Values.envGroup }}.svc.cluster.local
+
+          - name: PG_PORT
+            value: "5432"
+
+          - name: PG_USER
+            value: "postgres"
+
+          - name: PG_DATABASE
+            value: "pleaseprotect"
+
+          - name: PG_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: pp-postgres-secret
+                key: adminPasswordKey
+                optional: false
+
+          - name: AUDIT_ENDPOINT
+            value: "http://logstash-auditlog.logstash-auditlog.svc.cluster.local:8080"
+
+          - name: ENVIRONMENT
+            value: {{ .Values.envAliasJob }}
+
+        volumeMounts:
+          - name: node-id
+            mountPath: /data
+
+          - name: host-proc
+            mountPath: /host/proc
+            readOnly: true
+
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "64Mi"
+          limits:
+            cpu: "200m"
+            memory: "128Mi"
+
+      volumes:
+        - name: node-id
+          hostPath:
+            path: /data/heartbeat-agent
+            type: DirectoryOrCreate
+
+        - name: host-proc
+          hostPath:
+            path: /proc
+            type: Directory
