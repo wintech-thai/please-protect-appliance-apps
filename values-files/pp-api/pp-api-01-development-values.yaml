@@ -130,3 +130,17 @@ pp-api:
             name: idp-secret
             key: INITIAL_USER
             optional: false
+
+      - name: GIT_USER
+        valueFrom:
+          secretKeyRef:
+            name: gitea-secret
+            key: GIT_USER
+            optional: false
+
+      - name: GIT_PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: gitea-secret
+            key: GIT_PASSWORD
+            optional: false
