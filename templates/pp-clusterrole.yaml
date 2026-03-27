@@ -30,7 +30,7 @@ rules:
   resources:
     - pods
     - events
-  verbs: ["get", "list", "watch"]
+  verbs: ["get", "list", "watch", "delete"]
 
 # -----------------------
 # ADD: metrics (cpu/memory)
