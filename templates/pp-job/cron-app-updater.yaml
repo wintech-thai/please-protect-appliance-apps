@@ -55,10 +55,6 @@ spec:
             - name: temp-dir
               mountPath: /data/temp
 
-            - name: secrets
-              readOnly: true
-              mountPath: "/secrets"
-
           restartPolicy: OnFailure
 
           volumes:
