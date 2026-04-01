@@ -1,11 +1,11 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: ioc-loader
+  name: app-updater
 spec:
-  # kubectl create job --from=cronjob/ioc-loader ioc-loader-001 -n pp-production
-  suspend: false
-  schedule: "*/10 * * * *"
+  # kubectl create job --from=cronjob/app-updater app-updater-001 -n pp-development
+  suspend: true
+  schedule: "1 * * * *"
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: 3600
@@ -18,7 +18,7 @@ spec:
             command:
             - ruby
             args:
-            - /scripts/ioc-loader.rb
+            - /scripts/app-updater.rb
             env:
             - name: ENVIRONMENT 
               value: {{ .Values.envAliasJob }}
@@ -51,15 +51,13 @@ spec:
             - name: TEMP_DIR
               value: '/data/temp'
 
-            - name: REDIS_HOST
-              value: "redis-master.redis.svc.cluster.local"
-
-            - name: REDIS_PORT
-              value: "6379"
-
             volumeMounts:
             - name: temp-dir
               mountPath: /data/temp
+
+            - name: secrets
+              readOnly: true
+              mountPath: "/secrets"
 
           restartPolicy: OnFailure
 
