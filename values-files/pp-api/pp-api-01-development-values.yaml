@@ -144,3 +144,9 @@ pp-api:
             name: gitea-secret
             key: GIT_PASSWORD
             optional: false
+
+      - name: PP_CONTROL_PLANE_REMOTE_REPO
+        value: "https://github.com/wintech-thai/please-protect-control-plane.git"
+
+      - name: PP_DATA_PLANE_REMOTE_REPO
+        value: "https://github.com/wintech-thai/please-protect-data-plane.git"
