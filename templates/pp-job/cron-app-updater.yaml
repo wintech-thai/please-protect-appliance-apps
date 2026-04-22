@@ -71,13 +71,13 @@ spec:
               value: "please-protect-control-plane"
 
             - name: GIT_SOURCE_REF_TYPE1
-              value: "branch"
+              value: "tag"
 
             - name: GIT_SOURCE_REF_TYPE2
-              value: "branch"
+              value: "tag"
 
             - name: GIT_SOURCE_REF_TYPE3
-              value: "branch"
+              value: "tag"
 
             - name: GIT_SOURCE_REF_NAME1
               value: "main"
