@@ -76,7 +76,8 @@ pp-api:
             optional: false
 
       - name: LOG_ENDPOINT
-        value: "http://logstash-auditlog.logstash-auditlog.svc.cluster.local:8080"
+        value: "http://vector-auditlog.vector-auditlog.svc.cluster.local:8080"
+        #"http://logstash-auditlog.logstash-auditlog.svc.cluster.local:8080"
 
       - name: ES_USER
         valueFrom:
