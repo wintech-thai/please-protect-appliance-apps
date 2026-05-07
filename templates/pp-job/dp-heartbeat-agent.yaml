@@ -53,7 +53,7 @@ spec:
                 optional: false
 
           - name: AUDIT_ENDPOINT
-            value: "http://logstash-auditlog.logstash-auditlog.svc.cluster.local:8080"
+            value: "http://vector-auditlog.vector-auditlog.svc.cluster.local:8080"
 
           - name: ENVIRONMENT
             value: {{ .Values.envAliasJob }}
