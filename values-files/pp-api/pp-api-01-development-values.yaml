@@ -46,35 +46,6 @@ pp-api:
       - name: Redis__Port
         value: "6379"
 
-
-      - name: IDP_CLIENT_ID
-        valueFrom:
-          secretKeyRef:
-            name: idp-secret
-            key: IDP_CLIENT_ID
-            optional: false
-
-      - name: IDP_CLIENT_SECRET
-        valueFrom:
-          secretKeyRef:
-            name: idp-secret
-            key: IDP_CLIENT_SECRET
-            optional: false
-
-      - name: IDP_URL_PREFIX
-        valueFrom:
-          secretKeyRef:
-            name: idp-secret
-            key: IDP_URL_PREFIX
-            optional: false
-
-      - name: IDP_REALM
-        valueFrom:
-          secretKeyRef:
-            name: idp-secret
-            key: IDP_REALM
-            optional: false
-
       - name: LOG_ENDPOINT
         value: "http://vector-auditlog.vector-auditlog.svc.cluster.local:8080"
         #"http://logstash-auditlog.logstash-auditlog.svc.cluster.local:8080"
@@ -151,3 +122,6 @@ pp-api:
 
       - name: PP_DATA_PLANE_REMOTE_REPO
         value: "https://github.com/wintech-thai/please-protect-data-plane.git"
+
+      - name: IS_NATIVE_IDP
+        value: "true"
