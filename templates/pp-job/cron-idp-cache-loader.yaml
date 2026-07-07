@@ -4,7 +4,7 @@ metadata:
   name: idp-cache-loader
 spec:
   # kubectl create job --from=cronjob/idp-cache-loader idp-cache-loader-001 -n pp-production
-  suspend: false
+  suspend: true
   schedule: "*/10 * * * *"
   jobTemplate:
     spec:
